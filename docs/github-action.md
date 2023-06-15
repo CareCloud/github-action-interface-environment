@@ -4,15 +4,15 @@
 
 | Name | Description | Default | Required |
 |------|-------------|---------|----------|
-| application | Application name | N/A | false |
+| application | The application name | N/A | false |
 | attributes | Comma separated attributes | N/A | false |
-| environment | Environment name | N/A | true |
-| implementation\_github\_pat | GitHub PAT allow fetch environment action implementation | N/A | true |
+| environment | The environment name | N/A | true |
+| implementation\_github\_pat | GitHub PAT that allows fetching environment action implementation | N/A | true |
 | implementation\_path | Repository path with Environment action implementation | N/A | true |
 | implementation\_ref | Ref of environment action implementation | N/A | true |
 | implementation\_repository | Repository with Environment action implementation | N/A | true |
-| namespace | Namespace name | N/A | true |
-| repository | Repository name | N/A | true |
+| namespace | The namespace | N/A | true |
+| repository | The repository name | N/A | true |
 | tenant | The tenant for the deployment | N/A | true |
 
 
@@ -22,9 +22,10 @@
 |------|-------------|
 | cluster | The cluster to deploy to |
 | cluster-role | The IAM role to work with the cluster |
-| cluster-ssm-path | Path to the cluster ssm secrets |
-| name | Environment name |
-| namespace | Namespace |
+| cluster-ssm-path | The path to the EKS cluster secrets in the SSM Parameter Store |
+| name | The environment name |
+| namespace | The namespace |
 | region | The region |
-| secrets-ssm-role | The IAM role to work with the secrets in the SSM Parameter Store |
+| service-ssm-path | The path to the service secrets in the SSM Parameter Store |
+| service-ssm-role | The IAM role to work with the secrets in the SSM Parameter Store |
 <!-- markdownlint-restore -->

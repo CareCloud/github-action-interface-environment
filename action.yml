@@ -15,36 +15,39 @@ inputs:
     description: 'Ref of environment action implementation'
     required: true
   implementation_github_pat:
-    description: 'GitHub PAT allow fetch environment action implementation'
+    description: 'GitHub PAT that allows fetching environment action implementation'
     required: true
   environment:
-    description: "Environment name"
+    description: "The environment name"
     required: true
   namespace:
-    description: "Namespace name"
+    description: "The namespace"
     required: true
   repository:
-    description: "Repository name"
+    description: "The repository name"
     required: true
   tenant:
     description: "The tenant for the deployment"
     required: true
   application:
-    description: "Application name"
+    description: "The application name"
     required: false
   attributes:
     description: "Comma separated attributes"
     required: false
 outputs:
   name:
-    description: "Environment name"
+    description: "The environment name"
     value: ${{ steps.environment.outputs.name }}
   region:
     description: "The region"
     value: ${{ steps.environment.outputs.region }}
-  secrets-ssm-role:
+  service-ssm-role:
     description: "The IAM role to work with the secrets in the SSM Parameter Store"
-    value: ${{  steps.environment.outputs.secrets-ssm-role }}
+    value: ${{  steps.environment.outputs.service-ssm-role }}
+  service-ssm-path:
+    description: "The path to the service secrets in the SSM Parameter Store"
+    value: ${{ steps.environment.outputs.service-ssm-path }}
   cluster-role:
     description: "The IAM role to work with the cluster"
     value: ${{ steps.environment.outputs.cluster-role }}
@@ -52,10 +55,10 @@ outputs:
     description: "The cluster to deploy to"
     value: ${{ steps.environment.outputs.cluster }}
   namespace:
-    description: "Namespace"
+    description: "The namespace"
     value: ${{ steps.environment.outputs.namespace }}
   cluster-ssm-path:
-    description: "Path to the cluster ssm secrets"
+    description: "The path to the EKS cluster secrets in the SSM Parameter Store"
     value: ${{ steps.environment.outputs.cluster-ssm-path }}
 runs:
   using: "composite"

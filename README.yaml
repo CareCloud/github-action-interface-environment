@@ -72,7 +72,8 @@ usage: |-
         outputs:
           name: "${{ steps.environment.outputs.name }}"
           region: "${{ steps.environment.outputs.region }}"
-          secrets-ssm-role: "${{ steps.environment.outputs.secrets-ssm-role }}"
+          service-ssm-role: "${{ steps.environment.outputs.service-ssm-role }}"
+          service-ssm-path: "${{ steps.environment.outputs.service-ssm-path }}"
           cluster: "${{ steps.environment.outputs.cluster }}"
           cluster-role: "${{ steps.environment.outputs.cluster-role }}"
           cluster-ssm-path: "${{ steps.environment.outputs.cluster-ssm-path }}"
