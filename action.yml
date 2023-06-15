@@ -10,11 +10,9 @@ inputs:
     required: true
   implementation_path:
     description: 'Repository path with Environment action implementation'
-    default: ''
     required: true
   implementation_ref:
     description: 'Ref of environment action implementation'
-    default: 'main'
     required: true
   implementation_github_pat:
     description: 'GitHub PAT allow fetch environment action implementation'
@@ -27,7 +25,10 @@ inputs:
     required: true
   repository:
     description: "Repository name"
-    required: false
+    required: true
+  tenant:
+    description: "The tenant for the deployment"
+    required: true
   application:
     description: "Application name"
     required: false
@@ -39,20 +40,23 @@ outputs:
     description: "Environment name"
     value: ${{ steps.environment.outputs.name }}
   region:
-    description: "JSON formatted {label}: {environment} map"
+    description: "The region"
     value: ${{ steps.environment.outputs.region }}
-  role:
-    description: "Environments that need to be deployed"
-    value: ${{ steps.environment.outputs.role }}
+  secrets-ssm-role:
+    description: "The IAM role to work with the secrets in the SSM Parameter Store"
+    value: ${{  steps.environment.outputs.secrets-ssm-role }}
+  cluster-role:
+    description: "The IAM role to work with the cluster"
+    value: ${{ steps.environment.outputs.cluster-role }}
   cluster:
-    description: "Environments that need to be destroyed"
+    description: "The cluster to deploy to"
     value: ${{ steps.environment.outputs.cluster }}
   namespace:
     description: "Namespace"
     value: ${{ steps.environment.outputs.namespace }}
-  ssm-path:
-    description: "Path to ssm secrets"
-    value: ${{ steps.environment.outputs.ssm-path }}
+  cluster-ssm-path:
+    description: "Path to the cluster ssm secrets"
+    value: ${{ steps.environment.outputs.cluster-ssm-path }}
 runs:
   using: "composite"
   steps:
@@ -84,5 +88,6 @@ runs:
         environment: ${{ inputs.environment }}
         namespace: ${{ inputs.namespace }}
         repository: ${{ inputs.repository }}
+        tenant: ${{ inputs.tenant }}
         application: ${{ inputs.application }}
         attributes: ${{ inputs.attributes }}

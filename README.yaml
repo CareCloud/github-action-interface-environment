@@ -72,8 +72,10 @@ usage: |-
         outputs:
           name: "${{ steps.environment.outputs.name }}"
           region: "${{ steps.environment.outputs.region }}"
-          role: "${{ steps.environment.outputs.role }}"
+          secrets-ssm-role: "${{ steps.environment.outputs.secrets-ssm-role }}"
           cluster: "${{ steps.environment.outputs.cluster }}"
+          cluster-role: "${{ steps.environment.outputs.cluster-role }}"
+          cluster-ssm-path: "${{ steps.environment.outputs.cluster-ssm-path }}"
           namespace: "${{ steps.environment.outputs.namespace }}"
   ```
 
