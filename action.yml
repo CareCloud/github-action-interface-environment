@@ -93,7 +93,6 @@ runs:
       with:
         environment: ${{ inputs.environment }}
         namespace: ${{ inputs.namespace }}
-        repository: ${{ inputs.repository }}
         app-name: ${{ inputs.app-name }}
         tenant: ${{ inputs.tenant }}
         application: ${{ inputs.application }}
