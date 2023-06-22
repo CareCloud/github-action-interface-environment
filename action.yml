@@ -26,6 +26,9 @@ inputs:
   repository:
     description: "The repository name"
     required: true
+  app-name:
+    description: "Application name usually repository name"
+    required: true
   tenant:
     description: "The tenant for the deployment"
     required: true
@@ -91,6 +94,7 @@ runs:
         environment: ${{ inputs.environment }}
         namespace: ${{ inputs.namespace }}
         repository: ${{ inputs.repository }}
+        app-name: ${{ inputs.app-name }}
         tenant: ${{ inputs.tenant }}
         application: ${{ inputs.application }}
         attributes: ${{ inputs.attributes }}

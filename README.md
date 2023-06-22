@@ -120,6 +120,7 @@ Get Environments settings from private settings action provider.
 | implementation\_repository | Repository with Environment action implementation | N/A | true |
 | namespace | The namespace | N/A | true |
 | repository | The repository name | N/A | true |
+| app-name | The repository name | N/A | true |
 | tenant | The tenant for the deployment | N/A | true |
 
 
