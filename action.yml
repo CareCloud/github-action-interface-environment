@@ -48,9 +48,12 @@ outputs:
   service-ssm-role:
     description: "The IAM role to work with the secrets in the SSM Parameter Store"
     value: ${{  steps.environment.outputs.service-ssm-role }}
-  service-ssm-path:
+  service-config-ssm-path:
+    description: "The path to the service configs in the SSM Parameter Store"
+    value: ${{ steps.environment.outputs.service-config-ssm-path }}
+  service-secret-ssm-path:
     description: "The path to the service secrets in the SSM Parameter Store"
-    value: ${{ steps.environment.outputs.service-ssm-path }}
+    value: ${{ steps.environment.outputs.service-secret-ssm-path }}
   cluster-role:
     description: "The IAM role to work with the cluster"
     value: ${{ steps.environment.outputs.cluster-role }}
