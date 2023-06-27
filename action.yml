@@ -54,6 +54,9 @@ outputs:
   service-secret-ssm-path:
     description: "The path to the service secrets in the SSM Parameter Store"
     value: ${{ steps.environment.outputs.service-secret-ssm-path }}
+  platform-ssm-path:
+    description: "The path to the platform secrets per cluster in the SSM Parameter Store"
+    value: ${{ steps.environment.outputs.platform-ssm-path }}
   cluster-role:
     description: "The IAM role to work with the cluster"
     value: ${{ steps.environment.outputs.cluster-role }}
@@ -63,9 +66,6 @@ outputs:
   namespace:
     description: "The namespace"
     value: ${{ steps.environment.outputs.namespace }}
-  cluster-ssm-path:
-    description: "The path to the EKS cluster secrets in the SSM Parameter Store"
-    value: ${{ steps.environment.outputs.cluster-ssm-path }}
 runs:
   using: "composite"
   steps:

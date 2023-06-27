@@ -130,7 +130,7 @@ Get Environments settings from private settings action provider.
 |------|-------------|
 | cluster | The cluster to deploy to |
 | cluster-role | The IAM role to work with the cluster |
-| cluster-ssm-path | The path to the EKS cluster secrets in the SSM Parameter Store |
+| platform-ssm-path | The path to the EKS cluster secrets in the SSM Parameter Store |
 | name | The environment name |
 | namespace | The namespace |
 | region | The region |

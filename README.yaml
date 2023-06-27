@@ -76,7 +76,7 @@ usage: |-
           service-ssm-path: "${{ steps.environment.outputs.service-ssm-path }}"
           cluster: "${{ steps.environment.outputs.cluster }}"
           cluster-role: "${{ steps.environment.outputs.cluster-role }}"
-          cluster-ssm-path: "${{ steps.environment.outputs.cluster-ssm-path }}"
+          platform-ssm-path: "${{ steps.environment.outputs.platform-ssm-path }}"
           namespace: "${{ steps.environment.outputs.namespace }}"
   ```
 
