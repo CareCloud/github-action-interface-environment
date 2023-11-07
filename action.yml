@@ -69,6 +69,9 @@ outputs:
   namespace:
     description: "The namespace"
     value: ${{ steps.environment.outputs.namespace }}
+  secrets-name:
+    description: "The effective secrets name"
+    value: ${{ steps.secrets-context.outputs.name }}
 runs:
   using: "composite"
   steps:
@@ -93,6 +96,17 @@ runs:
       run: |
         mv ${{ steps.tmp.outputs.name }}/${{ inputs.implementation_path }}/ ./.environment_implementation/
 
+    - name: Determine secrets name
+      id: secrets-context
+      uses: cloudposse/github-action-yaml-config-query@0.1.2
+      with:
+        query: .${{ inputs.secrets-name == '' }}
+        config: |
+          true:
+            name: ${{ inputs.app-name }}
+          false:
+            name: ${{ inputs.secrets-name }}
+
     - name: Environment Info
       uses: ./.environment_implementation
       id: environment
@@ -100,7 +114,7 @@ runs:
         environment: ${{ inputs.environment }}
         namespace: ${{ inputs.namespace }}
         app-name: ${{ inputs.app-name }}
-        secrets-name: ${{ inputs.secrets-name }}
+        secrets-name: ${{ steps.secrets-context.outputs.name }}
         tenant: ${{ inputs.tenant }}
         application: ${{ inputs.application }}
         attributes: ${{ inputs.attributes }}
