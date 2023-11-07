@@ -26,21 +26,12 @@ inputs:
   repository:
     description: "The repository name"
     required: true
-  app-name:
-    description: "Application name usually repository name"
+  config-app-name:
+    description: "The application name for configuration purposes"
     required: true
-  secrets-name:
-    description: "The secrets name"
-    required: false
   tenant:
     description: "The tenant for the deployment"
     required: true
-  application:
-    description: "The application name"
-    required: false
-  attributes:
-    description: "Comma separated attributes"
-    required: false
 outputs:
   name:
     description: "The environment name"
@@ -69,9 +60,6 @@ outputs:
   namespace:
     description: "The namespace"
     value: ${{ steps.environment.outputs.namespace }}
-  secrets-name:
-    description: "The effective secrets name"
-    value: ${{ steps.secrets-context.outputs.name }}
 runs:
   using: "composite"
   steps:
@@ -96,25 +84,11 @@ runs:
       run: |
         mv ${{ steps.tmp.outputs.name }}/${{ inputs.implementation_path }}/ ./.environment_implementation/
 
-    - name: Determine the effective secrets name
-      id: secrets-context
-      uses: cloudposse/github-action-yaml-config-query@0.1.2
-      with:
-        query: .${{ inputs.secrets-name == '' }}
-        config: |
-          true:
-            name: ${{ inputs.app-name }}
-          false:
-            name: ${{ inputs.secrets-name }}
-
     - name: Environment Info
       uses: ./.environment_implementation
       id: environment
       with:
         environment: ${{ inputs.environment }}
         namespace: ${{ inputs.namespace }}
-        app-name: ${{ inputs.app-name }}
-        secrets-name: ${{ steps.secrets-context.outputs.name }}
+        config-app-name: ${{ inputs.config-app-name }}
         tenant: ${{ inputs.tenant }}
-        application: ${{ inputs.application }}
-        attributes: ${{ inputs.attributes }}
