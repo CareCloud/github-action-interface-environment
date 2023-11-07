@@ -29,6 +29,9 @@ inputs:
   app-name:
     description: "Application name usually repository name"
     required: true
+  secrets-name:
+    description: "The secrets name"
+    required: false
   tenant:
     description: "The tenant for the deployment"
     required: true
@@ -97,6 +100,7 @@ runs:
         environment: ${{ inputs.environment }}
         namespace: ${{ inputs.namespace }}
         app-name: ${{ inputs.app-name }}
+        secrets-name: ${{ inputs.secrets-name }}
         tenant: ${{ inputs.tenant }}
         application: ${{ inputs.application }}
         attributes: ${{ inputs.attributes }}
