@@ -96,7 +96,7 @@ runs:
       run: |
         mv ${{ steps.tmp.outputs.name }}/${{ inputs.implementation_path }}/ ./.environment_implementation/
 
-    - name: Determine secrets name
+    - name: Determine the effective secrets name
       id: secrets-context
       uses: cloudposse/github-action-yaml-config-query@0.1.2
       with:
