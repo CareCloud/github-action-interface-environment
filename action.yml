@@ -39,15 +39,18 @@ outputs:
   region:
     description: "The region"
     value: ${{ steps.environment.outputs.region }}
-  service-ssm-role:
+  ssm-role:
     description: "The IAM role to work with the secrets in the SSM Parameter Store"
-    value: ${{  steps.environment.outputs.service-ssm-role }}
+    value: ${{  steps.environment.outputs.ssm-role }}
   service-config-ssm-path:
     description: "The path to the service configs in the SSM Parameter Store"
     value: ${{ steps.environment.outputs.service-config-ssm-path }}
   service-secret-ssm-path:
     description: "The path to the service secrets in the SSM Parameter Store"
     value: ${{ steps.environment.outputs.service-secret-ssm-path }}
+  spa-config-ssm-path:
+    description: "The path to the SPA configs in the SSM Parameter Store"
+    value: ${{ steps.environment.outputs.spa-config-ssm-path }}
   platform-ssm-path:
     description: "The path to the platform secrets per cluster in the SSM Parameter Store"
     value: ${{ steps.environment.outputs.platform-ssm-path }}
