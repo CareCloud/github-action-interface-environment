@@ -39,9 +39,12 @@ outputs:
   region:
     description: "The region"
     value: ${{ steps.environment.outputs.region }}
+  build-role:
+    description: "The IAM role to work with the AWS build resources like S3 and ECR"
+    value: ${{ steps.environment.outputs.build-role}}
   ssm-role:
     description: "The IAM role to work with the secrets in the SSM Parameter Store"
-    value: ${{  steps.environment.outputs.ssm-role }}
+    value: ${{ steps.environment.outputs.ssm-role }}
   service-config-ssm-path:
     description: "The path to the service configs in the SSM Parameter Store"
     value: ${{ steps.environment.outputs.service-config-ssm-path }}
